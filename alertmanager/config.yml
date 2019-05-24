@@ -1,11 +1,30 @@
-route:
-    receiver: 'slack'
 
+route:
+  # If an alert does not match any rule, it goes to the default:
+  receiver: slack
+  routes:
+    - match:
+        severity: critical
+      receiver: slack1
+    - match:
+        severity: warning
+      receiver: slack2
 receivers:
-    - name: 'slack'
-      slack_configs:
-          - send_resolved: true
-            text: "{{ .CommonAnnotations.description }}"
-            username: 'Prometheus'
-            channel: '#<channel-name>'
-            api_url: 'https://hooks.slack.com/services/<webhook-id>'
+  - name: slack1
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/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'
+        text: "{{ .CommonAnnotations.description }}"
+        username: 'sguemil'
+        channel: '#critical_alerts'
+  - name: slack2
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/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'
+        text: "{{ .CommonAnnotations.description }}"
+        username: 'sguemil'
+        channel: '#prometheus'
+  - name: slack
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/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'
+        text: "{{ .CommonAnnotations.description }}"
+        username: 'sguemil'
+        channel: '#prometheus'
