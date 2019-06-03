@@ -12,19 +12,19 @@ route:
 receivers:
   - name: slack_alert
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
+      - api_url: 'https://hooks.slack.com/services/xxxxxx'
         text: "{{ .CommonAnnotations.description }}"
-        username: 'sguemil'
+        username: ''your_name
         channel: '#critical_alerts'
   - name: slack_warning
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
+      - api_url: 'https://hooks.slack.com/services/xxx/xxx'
         text: "{{ .CommonAnnotations.description }}"
-        username: 'sguemil'
+        username: 'your_name'
         channel: '#warning_alert'
   - name: slack_default
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
+      - api_url: 'https://hooks.slack.com/services/xxx/xxx'
         text: "{{ .CommonAnnotations.description }}"
-        username: 'sguemil'
+        username: 'your_name'
         channel: '#prometheus'
