@@ -15,6 +15,11 @@ git clone https://github.com/stefanprodan/dockprom
 cd dockprom
 
 ADMIN_USER=admin ADMIN_PASSWORD=admin docker-compose up -d
+docker-compose -f docker-compose.yml -f docker-compose_worker.yml up -d
+docker stack deploy --compose-file=docker-compose_worker.yml worker900
+docker stack rm worker9001
+
+docker services ls
 ```
 
 Prerequisites:

@@ -76,3 +76,13 @@ groups:
     annotations:
       summary: "Worker9001 down"
       description: "Worker9001 container is down for more than 30 seconds."
+
+  - alert: worker_9001_beat1
+    expr: demoservice_heartbeat_beat1_total{beat="beat1",instance="worker9001:9001",job="demoservice-app"} > 2
+    for: 5s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Worker9001 beat1 exceed 390"
+      description: "Worker9001 beat1 container is beyond limit."
+

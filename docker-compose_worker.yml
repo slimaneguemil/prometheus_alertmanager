@@ -1,0 +1,19 @@
+version: '3.3'
+
+networks:
+  monitor-net:
+#    driver: bridge
+
+services:
+  worker9001:
+    container_name: worker9001
+    image: worker9001
+   # build: ./worker9001
+    expose:
+      - 9001
+    ports:
+      - "9001:9001"
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
